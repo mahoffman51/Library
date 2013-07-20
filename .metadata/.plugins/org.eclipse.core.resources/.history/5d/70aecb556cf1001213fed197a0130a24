@@ -1,0 +1,5 @@
+package com.example.library.pages;
+
+public abstract class Page {
+
+}

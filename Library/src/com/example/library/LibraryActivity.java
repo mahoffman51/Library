@@ -5,19 +5,28 @@ import android.app.Activity;
 import android.view.Menu;
 
 public class LibraryActivity extends Activity {
+	
+	private PageManager mPageManager;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_library);
-    }
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_library);
+		initialize();
+	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.library, menu);
+		return true;
+	}
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.library, menu);
-        return true;
-    }
-    
+	private void initialize() {
+		mPageManager = new PageManager(this);
+	}
+	
+	public PageManager getPageManager() {
+		return mPageManager;
+	}
 }

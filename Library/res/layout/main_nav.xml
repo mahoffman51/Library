@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+        <TableRow
+            android:id="@+id/main_nav_row_images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" >
+
+            <FrameLayout
+                android:id="@+id/main_nav_home_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false" >
+
+                <ImageView
+                    android:id="@+id/main_nav_home_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/toggle_home_selected" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/main_nav_search_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false" >
+
+                <ImageView
+                    android:id="@+id/main_nav_search_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/toggle_instr_selected" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/main_nav_forward_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false" >
+
+                <ImageView
+                    android:id="@+id/main_nav_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_right" />
+            </FrameLayout>
+        </TableRow>
+
+</RelativeLayout>

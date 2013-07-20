@@ -1,0 +1,13 @@
+package com.example.library.pages;
+
+import com.example.library.LibraryActivity;
+
+public abstract class Page {
+	
+	private LibraryActivity mActivity;
+	
+	public Page (LibraryActivity activity) {
+		mActivity = activity;
+	}
+
+}

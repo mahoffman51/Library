@@ -1,0 +1,4 @@
+INDEX VERSION 1.126+/Users/markhoffman/Documents/Programming/Android/Library/.metadata/.plugins/org.eclipse.jdt.core
+2000160003.index
+240405807.index
+3055931853.index
