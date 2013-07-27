@@ -22,5 +22,6 @@
         <item>Tag</item>
         <item>Title</item>
     </string-array>
+    <string name="search_button">Search</string>
 
 </resources>

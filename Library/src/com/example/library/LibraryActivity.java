@@ -3,6 +3,7 @@ package com.example.library;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
 
 public class LibraryActivity extends Activity {
 	
@@ -28,5 +29,9 @@ public class LibraryActivity extends Activity {
 	
 	public PageManager getPageManager() {
 		return mPageManager;
+	}
+	
+	public void searchEntries(View view) {
+		mPageManager.searchEntry();
 	}
 }

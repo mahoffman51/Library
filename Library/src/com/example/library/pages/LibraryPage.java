@@ -1,6 +1,8 @@
 package com.example.library.pages;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import android.graphics.Color;
 import android.text.Html;
@@ -188,4 +190,62 @@ public class LibraryPage {
 		}
 	}
 
+	public void searchLibrary(Book b, boolean toggle) {
+		String author = b.getAuthors().get(0)[0];
+		String title = b.getTitle();
+		String year = b.getYear();
+		String genre = b.getGenres().get(0);
+		String tag = b.getTags().get(0);
+		ArrayList<Book> newList = new ArrayList<Book>();
+		if (toggle) {
+			for (Book b1 : mBookList) {
+				if (b1.getAuthors().get(0)[0].toLowerCase(Locale.ENGLISH)
+						.contains(author.toLowerCase(Locale.ENGLISH))
+						&& b1.getTitle()
+								.toLowerCase(Locale.ENGLISH)
+								.contains(title.toLowerCase(Locale.ENGLISH))
+						&& b1.getYear().toLowerCase(Locale.ENGLISH)
+								.contains(year.toLowerCase(Locale.ENGLISH))
+						&& b1.getGenres()
+								.get(0)
+								.toLowerCase(Locale.ENGLISH)
+								.contains(genre.toLowerCase(Locale.ENGLISH))
+						&& b1.getTags().get(0).toLowerCase(Locale.ENGLISH)
+								.contains(tag.toLowerCase(Locale.ENGLISH))) {
+					newList.add(b1);
+				}
+			}
+		} else {
+			for (Book b1 : mBookList) {
+				// check if user input string is contained in the book and
+				// make sure this string is not empty ("")
+				if ((b1.getAuthors().get(0)[0].toLowerCase(Locale.ENGLISH)
+						.contains(author.toLowerCase(Locale.ENGLISH)) && !author
+						.equals(""))
+						|| (b1.getTitle()
+								.toLowerCase(Locale.ENGLISH)
+								.contains(title.toLowerCase(Locale.ENGLISH)) && !title
+								.equals(""))
+						|| (b1.getYear().toLowerCase(Locale.ENGLISH)
+								.contains(year.toLowerCase(Locale.ENGLISH)) && !year
+								.equals(""))
+						|| (b1.getGenres()
+								.get(0)
+								.toLowerCase(Locale.ENGLISH)
+								.contains(genre.toLowerCase(Locale.ENGLISH)) && !genre
+								.equals(""))
+						|| (b1.getTags().get(0).toLowerCase(Locale.ENGLISH)
+								.contains(tag.toLowerCase(Locale.ENGLISH)) && !tag
+								.equals(""))) {
+					newList.add(b1);
+				}
+			}
+		}
+		mLibrary.setLibrary(newList);
+	}
+
+	public void resetLibrary() {
+		setUpSpinner();
+		setUpLibrary();
+	}
 }

@@ -1,16 +1,18 @@
 package com.example.library;
 
+import android.view.View;
+import android.widget.ImageView;
+
+import com.example.library.engine.Book;
 import com.example.library.pages.EditPage;
 import com.example.library.pages.LibraryPage;
 import com.example.library.pages.SearchPage;
-
-import android.view.View;
-import android.widget.ImageView;
 
 public class PageManager {
 
 	private LibraryActivity mActivity;
 	private LibraryPage mLibraryPage;
+	private SearchPage mSearchPage;
 
 	public PageManager(LibraryActivity activity) {
 		mActivity = activity;
@@ -18,9 +20,18 @@ public class PageManager {
 		setUpListeners();
 	}
 
+	public void searchEntry() {
+		Book b = mSearchPage.parseSearchEntries();
+		boolean toggle = mSearchPage.getToggleState();
+		mActivity.setContentView(R.layout.activity_library);
+		mLibraryPage.searchLibrary(b, toggle);
+		mLibraryPage.setUpSpinner();
+		setUpListeners();
+	}
+
 	private void initializePages() {
 		mLibraryPage = new LibraryPage(mActivity);
-		new SearchPage(mActivity);
+		mSearchPage = new SearchPage(mActivity);
 		new EditPage(mActivity);
 	}
 
@@ -33,6 +44,7 @@ public class PageManager {
 				// TODO: Make color of icon change on click
 				mActivity.setContentView(R.layout.activity_library);
 				setUpListeners();
+				mLibraryPage.resetLibrary();
 				mLibraryPage.setUpSpinner();
 			}
 		});
@@ -45,6 +57,7 @@ public class PageManager {
 				// TODO: Make color of icon change on click
 				mActivity.setContentView(R.layout.search_book);
 				setUpListeners();
+				mSearchPage.setUpSearchMenu();
 			}
 		});
 
