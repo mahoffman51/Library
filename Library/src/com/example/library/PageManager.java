@@ -13,6 +13,8 @@ public class PageManager {
 	private LibraryActivity mActivity;
 	private LibraryPage mLibraryPage;
 	private SearchPage mSearchPage;
+	private EditPage mEditPage;
+	private Book mBookToEdit;
 
 	public PageManager(LibraryActivity activity) {
 		mActivity = activity;
@@ -29,10 +31,23 @@ public class PageManager {
 		setUpListeners();
 	}
 
+	public void saveNewBook() {
+		Book b = mEditPage.getUserInput();
+		// TODO: Add Validated Book To Database
+		setUpListeners();
+	}
+
+	public void editExistingBook() {
+		mActivity.setContentView(R.layout.edit_book);
+		mEditPage.setUpEditMenu(mBookToEdit);
+		// TODO: Possibly need to make boolean here of edited/new for when the
+		// book gets saved into database to prevent duplicates
+	}
+
 	private void initializePages() {
 		mLibraryPage = new LibraryPage(mActivity);
 		mSearchPage = new SearchPage(mActivity);
-		new EditPage(mActivity);
+		mEditPage = new EditPage(mActivity);
 	}
 
 	public void setUpListeners() {
@@ -69,8 +84,13 @@ public class PageManager {
 				// TODO: Make color of icon change on click
 				mActivity.setContentView(R.layout.edit_book);
 				setUpListeners();
+				mEditPage.setUpEditMenu(null);
 			}
 		});
+	}
+
+	public void setBookToEdit(Book book) {
+		mBookToEdit = book;
 	}
 
 }

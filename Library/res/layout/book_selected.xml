@@ -119,5 +119,5 @@
         android:text="@string/edit_book"
         android:layout_above="@+id/main_nav_bar"
         android:layout_alignParentRight="true"
-        android:onClick="passBookForEdit"/>
+        android:onClick="editExistingBook"/>
 </RelativeLayout>

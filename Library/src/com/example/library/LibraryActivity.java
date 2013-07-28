@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.View;
 
 public class LibraryActivity extends Activity {
-	
+
 	private PageManager mPageManager;
 
 	@Override
@@ -26,12 +26,20 @@ public class LibraryActivity extends Activity {
 	private void initialize() {
 		mPageManager = new PageManager(this);
 	}
-	
+
 	public PageManager getPageManager() {
 		return mPageManager;
 	}
-	
+
 	public void searchEntries(View view) {
 		mPageManager.searchEntry();
+	}
+
+	public void saveEntry(View view) {
+		mPageManager.saveNewBook();
+	}
+
+	public void editExistingBook(View view) {
+		mPageManager.editExistingBook();
 	}
 }

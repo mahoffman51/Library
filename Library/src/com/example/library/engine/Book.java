@@ -1,6 +1,5 @@
 package com.example.library.engine;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,5 +123,21 @@ public class Book {
 			mIsRead = isRead;
 		else
 			mIsRead = "";
+	}
+
+	public String getAuthorsString() {
+		// TODO: Make this actually get all authors
+		// Account situations of one-named author (i.e. Plato)
+		return mAuthors.get(0)[0] + ", " + mAuthors.get(0)[1];
+	}
+
+	public String getGenresString() {
+		// TODO: Make this really list all genres
+		return mGenres.get(0);
+	}
+
+	public String getTagsString() {
+		// TODO: Make this really list all tags
+		return mTags.get(0);
 	}
 }

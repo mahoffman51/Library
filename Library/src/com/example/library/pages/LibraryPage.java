@@ -133,14 +133,14 @@ public class LibraryPage {
 					rating.setText(Html.fromHtml("<b>" + rating.getText()
 							+ "</b> " + book.getRating()));
 					mActivity.getPageManager().setUpListeners();
+					mActivity.getPageManager().setBookToEdit(book);
 				}
 			});
 			return bookLL;
 		}
 
 		private TextView getTextViewAuthors(final Book book) {
-			TextView tv2 = new TextView(
-					mActivity.getApplicationContext());
+			TextView tv2 = new TextView(mActivity.getApplicationContext());
 			tv2.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
 					LayoutParams.WRAP_CONTENT));
 			tv2.setText(book.getAuthors().get(0)[0] + ", "
@@ -152,8 +152,7 @@ public class LibraryPage {
 		}
 
 		private TextView getTextViewTitle(final Book book) {
-			TextView tv = new TextView(
-					mActivity.getApplicationContext());
+			TextView tv = new TextView(mActivity.getApplicationContext());
 			tv.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
 					LayoutParams.WRAP_CONTENT));
 			tv.setText(book.getTitle());
@@ -163,8 +162,7 @@ public class LibraryPage {
 		}
 
 		private TextView chooseLastView(String position, Book book) {
-			TextView tv = new TextView(
-					mActivity.getApplicationContext());
+			TextView tv = new TextView(mActivity.getApplicationContext());
 			tv.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
 					LayoutParams.WRAP_CONTENT));
 			tv.setTextSize(14);
@@ -201,14 +199,11 @@ public class LibraryPage {
 			for (Book b1 : mBookList) {
 				if (b1.getAuthors().get(0)[0].toLowerCase(Locale.ENGLISH)
 						.contains(author.toLowerCase(Locale.ENGLISH))
-						&& b1.getTitle()
-								.toLowerCase(Locale.ENGLISH)
+						&& b1.getTitle().toLowerCase(Locale.ENGLISH)
 								.contains(title.toLowerCase(Locale.ENGLISH))
 						&& b1.getYear().toLowerCase(Locale.ENGLISH)
 								.contains(year.toLowerCase(Locale.ENGLISH))
-						&& b1.getGenres()
-								.get(0)
-								.toLowerCase(Locale.ENGLISH)
+						&& b1.getGenres().get(0).toLowerCase(Locale.ENGLISH)
 								.contains(genre.toLowerCase(Locale.ENGLISH))
 						&& b1.getTags().get(0).toLowerCase(Locale.ENGLISH)
 								.contains(tag.toLowerCase(Locale.ENGLISH))) {
@@ -222,16 +217,13 @@ public class LibraryPage {
 				if ((b1.getAuthors().get(0)[0].toLowerCase(Locale.ENGLISH)
 						.contains(author.toLowerCase(Locale.ENGLISH)) && !author
 						.equals(""))
-						|| (b1.getTitle()
-								.toLowerCase(Locale.ENGLISH)
+						|| (b1.getTitle().toLowerCase(Locale.ENGLISH)
 								.contains(title.toLowerCase(Locale.ENGLISH)) && !title
 								.equals(""))
 						|| (b1.getYear().toLowerCase(Locale.ENGLISH)
 								.contains(year.toLowerCase(Locale.ENGLISH)) && !year
 								.equals(""))
-						|| (b1.getGenres()
-								.get(0)
-								.toLowerCase(Locale.ENGLISH)
+						|| (b1.getGenres().get(0).toLowerCase(Locale.ENGLISH)
 								.contains(genre.toLowerCase(Locale.ENGLISH)) && !genre
 								.equals(""))
 						|| (b1.getTags().get(0).toLowerCase(Locale.ENGLISH)
