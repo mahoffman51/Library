@@ -3,14 +3,14 @@ package com.example.library.database;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.library.engine.Book;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import com.example.library.engine.Book;
 
 public class BooksDataSource {
 
@@ -38,9 +38,6 @@ public class BooksDataSource {
 	public Book createBook(String title, String author, String year,
 			String genre, String tags, String summary, String rating,
 			String isRead) {
-		// TODO: parse these string for actual content (i.e. split author string
-		// to first and last name
-		Log.v("Author Test", "createBook, BooksDataSource  " + author);
 		ContentValues values = new ContentValues();
 		values.put(MySQLiteHelper.COLUMN_TITLE, title);
 		values.put(MySQLiteHelper.COLUMN_AUTHOR, author);
@@ -55,6 +52,30 @@ public class BooksDataSource {
 				values);
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_TITLE, allColumns,
 				MySQLiteHelper.ID + " = " + insertId, null, null, null, null);
+		cursor.moveToFirst();
+		Book newBook = cursorToBook(cursor);
+		cursor.close();
+		return newBook;
+	}
+
+	public Book editBook(long id, String title, String author, String year,
+			String genre, String tags, String summary, String rating,
+			String isRead) {
+		Log.i("DB TEST", "Made it here");
+		ContentValues values = new ContentValues();
+		values.put(MySQLiteHelper.COLUMN_TITLE, title);
+		values.put(MySQLiteHelper.COLUMN_AUTHOR, author);
+		values.put(MySQLiteHelper.COLUMN_GENRE, genre);
+		values.put(MySQLiteHelper.COLUMN_IS_READ, isRead);
+		values.put(MySQLiteHelper.COLUMN_RATING, rating);
+		values.put(MySQLiteHelper.COLUMN_SUMMARY, summary);
+		values.put(MySQLiteHelper.COLUMN_TAG, tags);
+		values.put(MySQLiteHelper.COLUMN_YEAR, year);
+		open();
+		database.update(MySQLiteHelper.TABLE_TITLE, values, MySQLiteHelper.ID
+				+ "='" + id + "'", null);
+		Cursor cursor = database.query(MySQLiteHelper.TABLE_TITLE, allColumns,
+				MySQLiteHelper.ID + " = " + id, null, null, null, null);
 		cursor.moveToFirst();
 		Book newBook = cursorToBook(cursor);
 		cursor.close();

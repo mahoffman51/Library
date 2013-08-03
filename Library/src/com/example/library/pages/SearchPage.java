@@ -74,8 +74,9 @@ public class SearchPage {
 	}
 
 	public Book parseSearchEntries() {
-		return new Book(Book.USER_ID_FLAG, parseEntry(TITLE), parseEntry(AUTHOR), parseEntry(YEAR),
-				parseEntry(GENRE), parseEntry(TAG), null, null, null);
+		return new Book(Book.USER_ID_FLAG, parseEntry(TITLE),
+				parseEntry(AUTHOR), parseEntry(YEAR), parseEntry(GENRE),
+				parseEntry(TAG), null, null, null);
 	}
 
 	private String parseEntry(String label) {

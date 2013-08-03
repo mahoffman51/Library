@@ -1,6 +1,5 @@
 package com.example.library;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -18,6 +17,7 @@ public class PageManager {
 	private EditPage mEditPage;
 	private Book mBookToEdit;
 	private BooksDataSource mDatabase;
+	private boolean mNewBook;
 
 	public PageManager(LibraryActivity activity) {
 		mActivity = activity;
@@ -35,14 +35,19 @@ public class PageManager {
 		setUpListeners();
 	}
 
-	public void saveNewBook() {
+	public void saveBook() {
 		Book b = mEditPage.getUserInput();
 		// TODO: Add Validated Book To Database/Library
-		Log.v("Author Test",
-				"saveNewBook, PageManager  " + b.getAuthorsString());
-		mDatabase.createBook(b.getTitle(), b.getAuthorsString(), b.getYear(),
-				b.getGenresString(), b.getTagsString(), b.getSummary(),
-				b.getRating(), b.getIsRead());
+		if (mNewBook) {
+			mDatabase.createBook(b.getTitle(), b.getAuthorsString(),
+					b.getYear(), b.getGenresString(), b.getTagsString(),
+					b.getSummary(), b.getRating(), b.getIsRead());
+		} else {
+			mDatabase.editBook(mBookToEdit.getId(), b.getTitle(),
+					b.getAuthorsString(), b.getYear(), b.getGenresString(),
+					b.getTagsString(), b.getSummary(), b.getRating(),
+					b.getIsRead());
+		}
 		moveToBlankLibrary();
 	}
 
@@ -53,6 +58,7 @@ public class PageManager {
 	}
 
 	public void editExistingBook() {
+		mNewBook = false;
 		mActivity.setContentView(R.layout.edit_book);
 		mEditPage.setUpEditMenu(mBookToEdit);
 		setUpListeners();
@@ -95,6 +101,7 @@ public class PageManager {
 			@Override
 			public void onClick(View v) {
 				// TODO: Make color of icon change on click
+				mNewBook = true;
 				mActivity.setContentView(R.layout.edit_book);
 				setUpListeners();
 				mEditPage.setUpEditMenu(null);

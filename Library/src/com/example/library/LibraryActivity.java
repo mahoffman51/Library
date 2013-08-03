@@ -36,7 +36,7 @@ public class LibraryActivity extends Activity {
 	}
 
 	public void saveEntry(View view) {
-		mPageManager.saveNewBook();
+		mPageManager.saveBook();
 	}
 
 	public void deleteEntry(View view) {

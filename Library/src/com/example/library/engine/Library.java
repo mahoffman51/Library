@@ -16,7 +16,6 @@ public class Library {
 
 	public Library(Context c) {
 		mLibrary = new ArrayList<Book>();
-		// makeTestLibrary();
 		// TODO: Add ability to make library from database and add books to this
 		// list as well as database
 		BooksDataSource bds = new BooksDataSource(c);
@@ -28,22 +27,6 @@ public class Library {
 
 	private void makeLibrary(BooksDataSource bds) {
 		mLibrary = bds.getAllBooks();
-	}
-
-	private void makeTestLibrary() {
-		makeTestBook("Title", "Last, First", "2000", "genre", "tag", "summary",
-				"5", "yes");
-		makeTestBook("A Title", "A Last, Z First", "3000", "A genre", "Z tag",
-				"A summary", "9", "no");
-		makeTestBook("Z Title", "Z Last, A First", "1000", "Z genre", "A tag",
-				"Z summary", "1", "yes");
-	}
-
-	private void makeTestBook(String string, String string2, String string4,
-			String string5, String string6, String string7, String string8,
-			String string9) {
-		mLibrary.add(new Book(Book.USER_ID_FLAG, string, string2, string4,
-				string5, string6, string7, string8, string9));
 	}
 
 	public List<Book> getLibrary() {
