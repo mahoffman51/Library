@@ -73,7 +73,6 @@ public class EditPage {
 		String title = mEditResponse.get(SearchPage.TITLE).getText().toString();
 		String author = mEditResponse.get(SearchPage.AUTHOR).getText()
 				.toString();
-		String[] authorArray = { author, "" };
 		String year = mEditResponse.get(SearchPage.YEAR).getText().toString();
 		String genre = mEditResponse.get(SearchPage.GENRE).getText().toString();
 		String tag = mEditResponse.get(SearchPage.TAG).getText().toString();
@@ -83,7 +82,7 @@ public class EditPage {
 				.toString();
 		String isRead = mEditResponse.get(SearchPage.HAVE_READ).getText()
 				.toString();
-		return new Book(title, authorArray, year, genre, tag, summary, rating,
-				isRead);
+		return new Book(Book.USER_ID_FLAG, title, author, year, genre, tag,
+				summary, rating, isRead);
 	}
 }

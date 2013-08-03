@@ -74,10 +74,7 @@ public class SearchPage {
 	}
 
 	public Book parseSearchEntries() {
-		String lastName = parseEntry(AUTHOR);
-		String[] author = new String[2];
-		author[0] = lastName;
-		return new Book(parseEntry(TITLE), author, parseEntry(YEAR),
+		return new Book(Book.USER_ID_FLAG, parseEntry(TITLE), parseEntry(AUTHOR), parseEntry(YEAR),
 				parseEntry(GENRE), parseEntry(TAG), null, null, null);
 	}
 

@@ -1,7 +1,7 @@
 package com.example.library;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
@@ -37,6 +37,10 @@ public class LibraryActivity extends Activity {
 
 	public void saveEntry(View view) {
 		mPageManager.saveNewBook();
+	}
+
+	public void deleteEntry(View view) {
+		mPageManager.deleteBook();
 	}
 
 	public void editExistingBook(View view) {

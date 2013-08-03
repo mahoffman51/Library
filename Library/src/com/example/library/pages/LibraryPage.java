@@ -33,7 +33,7 @@ public class LibraryPage {
 	}
 
 	private void setUpLibrary() {
-		mLibrary = new Library();
+		mLibrary = new Library(mActivity.getApplicationContext());
 	}
 
 	public void setUpSpinner() {
@@ -143,8 +143,7 @@ public class LibraryPage {
 			TextView tv2 = new TextView(mActivity.getApplicationContext());
 			tv2.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
 					LayoutParams.WRAP_CONTENT));
-			tv2.setText(book.getAuthors().get(0)[0] + ", "
-					+ book.getAuthors().get(0)[1]);
+			tv2.setText(book.displayAuthorsFirstThenLast());
 			tv2.setTextSize(14);
 			tv2.setPadding(50, 0, 0, 0);
 			tv2.setTextColor(Color.LTGRAY);

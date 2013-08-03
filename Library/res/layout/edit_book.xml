@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
+
     <include
         android:id="@+id/main_nav_bar"
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/save_entry_layout">
+        android:layout_above="@+id/save_entry_layout" >
 
         <ScrollView
             android:layout_width="match_parent"
@@ -36,13 +36,20 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/main_nav_bar"
         android:orientation="horizontal" >
-        
+
         <Button
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:onClick="saveEntry"
             android:text="Save Entry" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="deleteEntry"
+            android:text="Delete Entry" />
     </LinearLayout>
 
 </RelativeLayout>

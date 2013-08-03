@@ -5,6 +5,9 @@ import java.util.List;
 
 public class Book {
 
+	public static final long USER_ID_FLAG = -1;
+
+	private long mId;
 	private String mTitle;
 	private List<String[]> mAuthors;
 	private String mYear;
@@ -14,35 +17,43 @@ public class Book {
 	private String mRating;
 	private String mIsRead;
 
-	public Book(String title, String[] authorArray, String year, String genre,
-			String tag, String summary, String rating, String read) {
-		setTitle(title);
-		List<String[]> authors = new ArrayList<String[]>();
-		authors.add(authorArray);
-		setAuthors(authors);
-		setYear(year);
-		List<String> genres = new ArrayList<String>();
-		genres.add(genre);
-		setGenres(genres);
-		List<String> tags = new ArrayList<String>();
-		tags.add(tag);
-		setTags(tags);
-		setSummary(summary);
-		setRating(rating);
-		setIsRead(read);
+	public Book(long id, String title, String author, String year,
+			String genre, String tag, String summary, String rating, String read) {
+		mId = id;
+		mTitle = title;
+		mAuthors = convertStringAuthor(author);
+		mYear = year;
+		mGenres = convertStringGenre(genre);
+		mTags = convertStringTag(tag);
+		mSummary = summary;
+		mRating = rating;
+		mIsRead = read;
 	}
 
-	public Book(String title, List<String[]> authors, String year,
-			List<String> genres, List<String> tags, String summary,
-			String rating, String read) {
-		setTitle(title);
-		setAuthors(authors);
-		setYear(year);
-		setGenres(genres);
-		setTags(tags);
-		setSummary(summary);
-		setRating(rating);
-		setIsRead(read);
+	private List<String> convertStringTag(String tag) {
+		// TODO Actually make list
+		List<String> tags = new ArrayList<String>();
+		tags.add(tag);
+		return tags;
+	}
+
+	private List<String> convertStringGenre(String genre) {
+		// TODO Actually make list
+		List<String> genres = new ArrayList<String>();
+		genres.add(genre);
+		return genres;
+	}
+
+	private List<String[]> convertStringAuthor(String author) {
+		// TODO Actually make list
+		List<String[]> authors = new ArrayList<String[]>();
+		String[] authorArray = { author, "" };
+		authors.add(authorArray);
+		return authors;
+	}
+
+	public long getId() {
+		return mId;
 	}
 
 	public String getTitle() {
@@ -128,7 +139,7 @@ public class Book {
 	public String getAuthorsString() {
 		// TODO: Make this actually get all authors
 		// Account situations of one-named author (i.e. Plato)
-		return mAuthors.get(0)[0] + ", " + mAuthors.get(0)[1];
+		return mAuthors.get(0)[0];
 	}
 
 	public String getGenresString() {
@@ -139,5 +150,11 @@ public class Book {
 	public String getTagsString() {
 		// TODO: Make this really list all tags
 		return mTags.get(0);
+	}
+
+	public String displayAuthorsFirstThenLast() {
+		// TODO: Make this display all the authors as desired in the selected
+		// book view. i.e. "John Smith, Adam Wells"
+		return getAuthorsString();
 	}
 }
